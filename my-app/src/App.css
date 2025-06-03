@@ -1,0 +1,1092 @@
+.App {
+  font-family: sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* убирает горизонтальную прокрутку */
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* Стили для первой страницы */
+
+@font-face {
+  font-family: 'Decima Mono Cyr';
+  src: url('./fonts/decimamonocyr_bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter-Regular.otf') format('opentype'); /* укажи путь и формат */
+  font-weight: normal;
+  font-style: normal;
+}
+
+.first-page {
+  background-image: url('./assets/main_background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;       /* по вертикали центр */
+  justify-content: flex-start; /* по горизонтали слева (если хочешь по центру — поменяй на center) */
+
+  font-family: 'Decima Mono Cyr', monospace, sans-serif;
+  color: white;
+  font-size: 2rem;
+}
+.first-page .container {
+  padding-top: 0;  /* убираем отступ сверху */
+  width: 100%;
+}
+
+
+.main-text {
+  font-size: 120px;
+  text-transform: uppercase;
+  margin: 0;              /* убираем все отступы */
+  line-height: 0.4;         /* управляем плотностью строки */
+}
+
+.sub-text {
+  font-size: 120px;
+  text-transform: uppercase;
+  margin: 0;              /* тоже убираем отступы */
+}
+
+
+.description-text{
+  padding: 30px 0;
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 300;
+}
+
+.main-button {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background: linear-gradient(to right, #76388A, rgb(80, 39, 94)); /* градиент слева направо */
+  
+  border: none;
+  padding: 20px 80px;
+  font-size: 25px;
+  font-family: 'Inter', monospace, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 15px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-button:hover {
+  background: linear-gradient(to right, #76388A, rgb(80, 39, 94)); /* градиент слева направо */
+  box-shadow: 0 10px 20px rgba(118, 56, 138, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+/* Общий контейнер, убираем высоту и flex */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Отдельный класс для хедера, чтобы сохранить высоту и flex */
+.header-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* отступ между строками адресов */
+  margin-bottom: 40px; /* отступ снизу, если нужно */
+}
+
+.address-row {
+  display: flex;
+  gap: 40px; /* отступ между адресами в строке */
+}
+
+.address-text {
+  margin: 0; /* убрать лишние отступы */
+  font-weight: normal;
+  font-size: 1.2rem; /* по желанию */
+  color: white; /* если фон тёмный */
+}
+
+/* Header */
+.header {
+  position: fixed;
+  padding: 10px;
+
+  left: 0;
+  width: 100%;
+  color: white;
+  z-index: 10;
+
+  background-color: transparent;  /* изначально прозрачный */
+  transition: background-color 0.4s ease; /* плавный переход */
+}
+
+.header.scrolled {
+  background-color: rgba(27, 27, 27, 0.6); /* темный полупрозрачный фон */
+  backdrop-filter: blur(8px); /* размытие фона позади шапки */
+  -webkit-backdrop-filter: blur(8px); /* для Safari */
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.logo {
+  background-image: url('./assets/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain; /* или cover, если нужно заполнение */
+  background-position: center;
+  width: 120px;   /* или размер твоего логотипа */
+  height: 60px;
+}
+
+/* Меню по центру */
+.menu {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.menu a.active {
+  color: #76388A; /* фіолетовий */
+  font-weight: 700;
+}
+
+
+.menu a:hover {
+  color: #76388A; /* фіолетовий */
+}
+
+
+/* Кнопка справа */
+.header-button {
+  text-decoration: none;
+  display: inline-block;
+  color: #121212; /* фіолетовый цвет текста */
+
+  text-align: center;
+  background-color: #ffffff;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-family: 'Decima Mono Cyr', monospace, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.header-button:hover {
+  background-color: #dadada;
+}
+
+
+/* Стили для второй страницы */
+
+.second-page {
+  background-image: url('./assets/main_background2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  height: auto;
+  padding-bottom: 40px;
+  display: flex;
+  color: white;
+  font-size: 40px;
+
+  /* align-items: center; */ /* если не нужен — оставь закомментированным */
+}
+
+.second-page .container {
+  padding-top: 70px;
+  width: 100%; /* чтобы занимал всю ширину */
+}
+
+.second-page h2 {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-row {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap; /* ⬅️ вот это добавляем */
+  justify-content: center; /* чтобы по центру */
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-block {
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+}
+
+.image-block:hover {
+  transform: scale(1.03);
+}
+
+.image-left,
+.image-right {
+  width: 460px;
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+/* Подставь свои пути к изображениям */
+.image-left {
+  background-image: url('./assets/turnir1.png');
+}
+
+.image-right {
+  background-image: url('./assets/turnir2.png');
+}
+
+.image-block {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+}
+
+.image {
+  width: 100%;
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.image-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.image-block a {
+  text-decoration: none; /* убирает подчёркивание */
+  color: inherit;         /* наследует цвет текста от родителя */
+}
+
+/* Лого как фон */
+.footer-logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('./assets/logorectangle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+/* Текст рядом с логотипом */
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.second-main-text {
+  font-size: 11px;
+  color: #95ACDA;
+  font-family: 'Inter';
+  text-transform: uppercase;
+}
+
+.second-league-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Inter';
+  text-transform: uppercase;
+}
+
+.second-place-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #95ACDA;
+  font-family: 'Inter';
+}
+
+.footer-text h3 {
+  margin: 0;
+  margin-bottom: 6px; /* регулируй размер отступа */
+}
+
+.footer-text h3:last-child {
+  margin-bottom: 0; /* убираем отступ у последнего */
+}
+
+/* Третья страница */
+
+.third-page {
+  background-image: url('./assets/main_background3.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /* Используем cover, чтобы фон масштабировался */
+  background-size: cover;
+
+  width: 100vw;
+  min-height: 1200px;  /* минимум высоты */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'Decima Mono Cyr', monospace, sans-serif;
+  color: white;
+  padding-top: 40px;
+}
+
+.third-page .container {
+  max-width: 1400px; /* или 100%, если хочешь во всю ширину */
+  width: 100%;
+  padding: 0 40px;    /* отступы слева и справа */
+  margin: 0 auto;
+}
+
+.prize-description-text {
+  width: 100%;           /* чтобы занимал всю ширину .prize-card */
+  text-align: center;    /* и выравнивался по центру */
+  font-size: 14px;       /* или любой другой размер */
+  color: rgba(255,255,255,0.85);
+}
+
+.third-title {
+  font-size: 60px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.third-description {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.third-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* выравнивание текста слева */
+  width: 100%;
+}
+
+.third-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 0 auto; /* центрирует всю группу (текст + карточки) */
+}
+
+
+.main-prize-image {
+  width: 100%;
+  height: 300px;
+  background-image: url('./assets/main_prize.png'); /* заміни на свій шлях */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-prize-text {
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(255,255,255,0.9);
+}
+
+
+.prize-grid {
+  display: flex;
+  justify-content: center; /* выравнивание карточек по центру */
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.prize-card {
+  cursor: pointer;
+
+  width: 220px;
+  height: 310px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.prize-image {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* MAIN prizes */
+.prize-card.main-1 .prize-image {
+  background-image: url('./assets/main_prize.png');
+}
+
+/* ACTIVE prizes */
+.prize-card.active-1 .prize-image {
+  background-image: url('./assets/mouse.png');
+}
+.prize-card.active-2 .prize-image {
+  background-image: url('./assets/mouse.png');
+}
+.prize-card.active-3 .prize-image {
+  background-image: url('./assets/mouse.png');
+}
+
+/* LIGHT LEAGUE prizes */
+.prize-card.light-1 .prize-image {
+  background-image: url('./assets/light_1.png');
+}
+.prize-card.light-2 .prize-image {
+  background-image: url('./assets/2.png');
+}
+.prize-card.light-3 .prize-image {
+  background-image: url('./assets/light_3.png');
+}
+.prize-card.light-4 .prize-image {
+  background-image: url('./assets/light_4.png');
+}
+.prize-card.light-5 .prize-image {
+  background-image: url('./assets/light_5.png');
+}
+
+/* PRO LEAGUE prizes */
+.prize-card.pro-1 .prize-image {
+  background-image: url('./assets/pro_1.png');
+}
+.prize-card.pro-2 .prize-image {
+  background-image: url('./assets/2.png');
+}
+.prize-card.pro-3 .prize-image {
+  background-image: url('./assets/pro_3.png');
+}
+.prize-card.pro-4 .prize-image {
+  background-image: url('./assets/pro_4.png');
+}
+.prize-card.pro-5 .prize-image {
+  background-image: url('./assets/pro_5.png');
+}
+
+.prize-text {
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+
+.partners-section {
+  padding-top: 110px;  /* Отступ от низа */
+  text-align: center;
+  z-index: 1000;
+  /* если нужно фиксировать ширину, например: */
+  width: 100%;
+}
+
+.partners-title {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  width: 80px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.partner-logo:hover {
+  transform: scale(1.05);
+}
+
+/* 🔽 Указываем путь к каждой картинке */
+.partner1 {
+  background-image: url('./assets/fotter3.png');
+}
+
+.partner2 {
+  background-image: url('./assets/fotter4.png');
+}
+
+.partner3 {
+  background-image: url('./assets/fotter2.png');
+}
+
+.partner4 {
+  background-image: url('./assets/fotter1.png');
+}
+
+/*Четвертая страница*/
+.four-section {
+  background-color: #040404;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: white;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /* Используем cover, чтобы фон масштабировался */
+  background-size: cover;
+}
+.foursection-title-text {
+  text-align: center;
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* отступ между FAQ элементами */
+}
+
+.faq-item {
+  cursor: pointer;
+  background-color: #121212;
+  padding: 20px 30px;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.faq-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: pre-line;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding-left: 5px;
+  margin-top: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease, padding 0.5s ease;
+}
+
+.faq-answer.open {
+  max-height: 500px; /* достаточно большой max-height для анимации */
+  opacity: 1;
+  margin-top: 15px;
+  padding-left: 5px;
+}
+
+.faq-text {
+  font-size: 1.1rem;
+  flex-grow: 1;
+  margin-right: 15px; /* небольшой отступ справа перед логотипом */
+}
+
+/* Лого справа в каждом элементе FAQ */
+.faq-logo {
+  width: 24px;
+  height: 24px;
+  background-image: url('./assets/faq-logo.png'); /* путь к твоему лого */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.four-section-under{
+  text-align: center;
+  margin-top: 60px;
+}
+
+.four-section-pre-main-text {
+  font-size: 28px;
+  color: white;
+}
+
+.four-section-button {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background: linear-gradient(to right, #76388A, rgb(80, 39, 94)); /* градиент слева направо */
+  
+  border: none;
+  padding: 20px 40px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: 'Inter', monospace, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 15px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.four-section-button:hover {
+  background: linear-gradient(to right, #76388A, rgb(80, 39, 94)); /* градиент слева направо */
+  box-shadow: 0 10px 20px rgba(118, 56, 138, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+/* Внешний футер - на всю ширину с фоном */
+.footer {
+  width: 100%;
+  min-height: 300px; /* вместо height */
+  height: auto;
+  background-image: url('./assets/footer.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  display: flex;
+  justify-content: center; /* центрируем внутренний контейнер */
+  align-items: center;
+  color: white;
+}
+
+/* Внутренний контейнер для контента с max-width */
+.footer-inner {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 60px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-side {
+  width: 220px;             /* фиксированная ширина блока */
+  white-space: nowrap;      /* запрещаем перенос текста */
+  overflow: visible;        /* если хотите показывать весь текст */
+  text-align: center;
+  padding: 0 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.footer-links {
+  text-decoration: none; /* убираем подчеркивание */
+  color: inherit;       /* наследуем цвет от родителя */
+  font-weight: 700;
+}
+
+/* Центр как колонка */
+.footer-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+
+.footer-main-text {
+  font-size: 100px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.footer-sub-text {
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.footer-addresses {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  max-width: 700px;
+}
+
+.address-left, .address-right {
+  text-align: left;
+}
+
+.footer-left {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family:'Inter', monospace
+}
+
+.footer-right {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family:'Inter', monospace
+}
+
+.footer-left p::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url('./assets/instagram.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.footer-right p::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url('./assets/telegram.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
+
+@media (max-width: 768px) {
+  .address-container {
+    display: none;
+  }
+
+  .header {
+    display: none;
+  }
+
+  
+
+  .first-page {
+    background-image: url('./assets/phone_background1.png');
+
+    background-size: cover;           /* чтобы фон занимал всю область */
+    background-position: center;      /* центрирование фона */
+    background-repeat: no-repeat;     /* не повторять */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .first-page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .first-page-content .text-section {
+    margin-top: 10vh;
+  }
+
+  /* 🔻 Адаптивний текст */
+  .main-text {
+    font-size: clamp(32px, 20vw, 140px); /* мін 32px, макс 80px, залежить від ширини */
+    line-height: 1.1;
+  }
+
+  .sub-text {
+    font-size: clamp(32px, 20vw, 140px); /* мін 32px, макс 80px, залежить від ширини */
+    line-height: 1.1;
+  }
+
+  .prize-pool-text {
+    font-size: clamp(16px, 20vw, 24px); /* мін 32px, макс 80px, залежить від ширини */
+  }
+
+  .description-text {
+    font-size: clamp(12px, 4vw, 16px);
+    padding: 10px 10px;
+    line-height: 1.4;
+    text-align: left;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .main-button {
+    align-self: center;
+    margin-bottom: 20px;
+    padding: 20px 80px;
+    font-size: clamp(14px, 5vw, 18px);
+  }
+
+  .logo {
+    margin: 0 auto;
+    max-width: 60vw;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .image-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .image-block {
+    width: 100%;
+    max-width: 90vw; /* картка буде максимум 90% ширини екрана */
+  }
+
+  .image-left,
+  .image-right,
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* дозволяє зберігати співвідношення сторін */
+    border-radius: 10px;
+  }
+
+  .image-footer {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .footer-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .second-main-text {
+    font-size: 10px;
+  }
+
+  .second-league-text {
+    font-size: 12px;
+  }
+
+  .second-place-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .third-description {
+    display: flex;
+    justify-content: center; /* горизонтальное центрирование */
+    align-items: center;     /* вертикальное центрирование, если нужно */
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    height: 100vh; /* например, если нужно центрировать по вертикали */
+  }
+
+  .partner-logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .foursection-title-text {
+    font-size: clamp(28px, 8vw, 44px); /* Заголовок FAQ */
+    margin-bottom: 30px;
+  }
+
+  .faq-item {
+    padding: 16px 20px;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+
+  .faq-text {
+    font-size: clamp(14px, 4vw, 18px);
+    margin-right: 10px;
+    word-wrap: break-word; /* ⬅️ дозволяє розривати довгі слова */
+    white-space: normal;    /* ⬅️ дозволяє перенос тексту */
+    line-height: 1.4;
+  }
+
+  .faq-answer {
+    font-size: clamp(13px, 3.5vw, 16px);
+    line-height: 1.5;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .faq-answer {
+    font-size: clamp(13px, 3.5vw, 16px); /* Ответ */
+    line-height: 1.5;
+    padding-left: 2px;
+  }
+
+  .faq-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .four-section-pre-main-text {
+    font-size: clamp(18px, 5vw, 22px); /* Подзаголовок перед кнопкой */
+  }
+
+  .four-section-button {
+    font-size: clamp(14px, 4.5vw, 18px);
+    padding: 16px 32px;
+    border-radius: 12px;
+  }
+
+  .four-section {
+    padding: 30px 15px; /* Уменьшаем отступы */
+  }
+}
+
+@media (max-width: 590px) {
+  .faq-text {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .faq-text {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 445px) {
+  .faq-text {
+    font-size: 12px;
+  }
+}
+
+/* 🌐 Медиа-запрос для адаптации на мобилках */
+@media (max-width: 780px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-side {
+    margin-bottom: 15px;
+  }
+
+  .footer-addresses {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .address-left,
+  .address-right {
+    margin: 0;
+    text-align: center;
+  }
+
+  .footer-main-text {
+    font-size: 50px;
+  }
+
+  .footer-sub-text {
+    font-size: 18px;
+  }
+
+  .footer-links {
+    text-decoration: none; /* убираем подчеркивание */
+    color: inherit;       /* наследуем цвет от родителя */
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
