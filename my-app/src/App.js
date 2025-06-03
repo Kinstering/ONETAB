@@ -295,7 +295,7 @@ function App() {
 }
 
 const mainPrizes = [
-  { place: 1, description: 'Мишка Logitech G Pro X Superlight'},
+  { place: 1, description: "Комп'ютер ARTLINE Gaming D31"},
 ];
 
 const activePrizes = [
@@ -306,18 +306,19 @@ const activePrizes = [
 
 const lightLeaguePrizes = [
   { place: 1, description: 'Крісло для геймерів Proove Gaming Unit'},
-  { place: 2, description: 'Навушники HyperX'},
-  { place: 3, description: 'Клавіатура Coupe white, Миша Rate Pro, Коврик Radiance XL'},
-  { place: 4, description: 'Мишка Logitech G Pro X Superlight'},
-  { place: 5, description: 'Мишка Logitech G Pro X Superlight'},
+  { place: 2, description: 'Монітор QUBE 25" FHD 360Hz'},
+  { place: 3, description: 'Клавіатура Everfrost black, Коврик Rate SE, Коврик Radiance L black'},
+  { place: 4, description: 'Slicker black'},
+  { place: 5, description: 'Slicker black'},
 ];
 
 const proLeaguePrizes = [
   { place: 1, description: 'Крісло для геймерів Proove Gaming NPC'},
   { place: 2, description: 'Геймерське крісло'},
-  { place: 3, description: 'Пауербанк Anker'},
-  { place: 4, description: 'Мишка Logitech G Pro X Superlight'},
-  { place: 5, description: 'Мишка Logitech G Pro X Superlight'},
+  { place: 3, description: 'Клавіатура Coupe white, Миша Rate Pro, Коврик Radiance XL'},
+  { place: 4, description: 'Slicker Pro black'},
+  { place: 5, description: 'Rate Pro black'},
 ];
 
 export default App;
+
