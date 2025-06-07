@@ -50,6 +50,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Decima Mono Cyr', monospace, sans-serif;
   color: white;
   font-size: 2rem;
+
+  padding-top: 60px
 }
 .first-page .container {
   padding-top: 0;  /* убираем отступ сверху */
@@ -63,6 +65,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;              /* убираем все отступы */
   line-height: 0.4;         /* управляем плотностью строки */
 }
+
+.prize-pool-description-text {
+    font-size: 26px
+  }
 
 .sub-text {
   font-size: 120px;
@@ -105,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Общий контейнер, убираем высоту и flex */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -395,6 +401,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;           /* чтобы занимал всю ширину .prize-card */
   text-align: center;    /* и выравнивался по центру */
   font-size: 14px;       /* или любой другой размер */
+  padding: 0 10px;
   color: rgba(255,255,255,0.85);
 }
 
@@ -456,7 +463,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 
   width: 220px;
-  height: 310px;
+  height: 340px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 40px;
   overflow: hidden;
@@ -587,6 +594,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .partner4 {
   background-image: url('./assets/fotter1.png');
+}
+
+.partner5 {
+  background-image: url('./assets/footer5.png');
 }
 
 /*Четвертая страница*/
@@ -849,6 +860,10 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
   }
 
+  .prize-pool-description-text {
+    font-size: 14px
+  }
+
   .first-page-content {
     display: flex;
     flex-direction: column;
@@ -951,6 +966,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+
   .third-description {
     display: flex;
     justify-content: center; /* горизонтальное центрирование */
@@ -958,7 +974,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     font-size: 30px;
     width: 100%;
-    height: 100vh; /* например, если нужно центрировать по вертикали */
+    padding: 30px;
   }
 
   .partner-logo {
@@ -1073,7 +1089,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     text-align: center;
   }
-
+  
   .footer-main-text {
     font-size: 50px;
   }

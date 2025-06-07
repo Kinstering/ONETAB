@@ -22,7 +22,7 @@ function App() {
     },
     {
       question: '2. Як формується рейтинг сезону ONETAB BATTLE?',
-      answer: 'Рейтинг гравців у кожній лізі залежить від результатів батлів:\n1. За перемогу гравець отримує +1 бал\n2. За поразку втрачає -1 бал\n3. При цьому загальна кількість балів не може бути нижчою за 0\n\nЧим більше перемог — тим вищий рейтинг. ТОП-10 гравців в кожній лізі, які мають найбільшу кількість балів, очолюють турнірну таблицю та будуть змагатись за першість сезону та призи від спонсорів сезону\n\nЦе мотивує змагатися активно та регулярно, адже кожен батл має значення.'
+      answer: 'Рейтинг гравців у кожній лізі залежить від результатів батлів:\n\n1. За перемогу гравець отримує:\n+1 бал в форматі батлу 1х1\n+2 бали в форматі батлу 2х2\n+3 бали в форматі батлу 5х5 стак команди та 5х5 мікс\n*у разі проведення батлу у нічний час до вищевказаних балів ще +2 бали)\n\n2. За участь у батлі гравець отримує +1 бал\n\nЧим більше перемог — тим вищий рейтинг. ТОП-10 гравців в кожній лізі, які мають найбільшу кількість балів, очолюють турнірну таблицю та будуть змагатись за першість сезону та призи від спонсорів сезону\n\nЦе мотивує змагатися активно та регулярно, адже кожен батл має значення.'
     },
     {
       question: '3. Де знайти розклад батлів?',
@@ -97,7 +97,8 @@ function App() {
           <div>
             <h1 className='main-text'>Onetab</h1>
             <h1 className='sub-text'>Battle</h1>
-            <h2 className="prize-pool-text">ПРИЗОВИЙ ПУЛ — 99 999 грн</h2> {/* можно будет подставить число динамически */}
+            <h2 className="prize-pool-text">ПРИЗОВИЙ ПУЛ — 100 000 грн</h2> {/* можно будет подставить число динамически */}
+            <h2 className="prize-pool-description-text">80000 грн у призах та 20000 грн винагорода</h2> {/* можно будет подставить число динамически */}
             <h3 className='description-text'>
               Сезон батлів з COUNTER STRIKE 2 — щоденні матчі між мікс-командами.<br />
               У фіналі топ-20 найкращих гравців сезону зійдуться в боротьбі<br />за призовий пул від спонсорів.<br /><br />
@@ -130,12 +131,12 @@ function App() {
           <h2>Рейтинг</h2>
           <div className="image-row">
               <div className="image-block">
-                <a href="https://example.com/league-1" target="_blank" rel="noopener noreferrer" className="image-block">
+                <a href="https://docs.google.com/spreadsheets/d/10mLR-SOe7dhsbAkqdAyeBONusedK50i0kIXr7x9xxMc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="image-block">
                   <div className="image image-left"></div>
                   <div className="image-footer">
                     <div className="footer-logo"></div>
                     <div className="footer-text">
-                      <h3 className="second-main-text">Від 2000 ELO</h3>
+                      <h3 className="second-main-text">Від 1800 ELO</h3>
                       <h3 className="second-league-text">PRO LEAGUE - CS 2 5X5 (MIX)</h3>
                       <h3 className="second-place-text">2 місяця • 01.06.2025 - 31.08.2025</h3>
                     </div>
@@ -145,12 +146,12 @@ function App() {
 
             {/* Правая карточка */}
             <div className="image-block">
-              <a href="https://example.com/league-2" target="_blank" rel="noopener noreferrer" className="image-block">
+              <a href="https://docs.google.com/spreadsheets/d/16iZUFbXgyKZV8TVHjfLZIH2jKwKv-S2VwUtuJBiXGk4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="image-block">
                 <div className="image image-right"></div>
                 <div className="image-footer">
                   <div className="footer-logo"></div>
                   <div className="footer-text">
-                    <h3 className='second-main-text'>Від 2000 ELO</h3>
+                    <h3 className='second-main-text'>До 1800 ELO</h3>
                     <h3 className='second-league-text'>PRO LEAGUE - CS 2 5X5 (MIX)</h3>
                     <h3 className='second-place-text'>2 місяця • 01.06.2025 - 31.08.2025</h3>
                   </div>
@@ -167,13 +168,12 @@ function App() {
 
           {/* ГОЛОВНИЙ ПРИЗ СЕЗОНУ */}
           <div className="third-grid-wrapper">
-            <p className="third-description highlight">ГОЛОВНИЙ ПРИЗ СЕЗОНУ</p>
+            <p className="third-description highlight">РОЗІГРАШ ІГРОВОГО ПК</p>
             <div className="prize-grid">
               {mainPrizes.map((prize, idx) => (
                 <div className={`prize-card main-${idx + 1}`} key={`main-${idx}`}>
                   <div className="prize-image"></div>
-                  <div className="prize-text">{prize.place} Місце</div>
-                  <div className="prize-description-text">{prize.description}</div>
+                  <div className="prize-text">{prize.description}</div>
                 </div>
               ))}
             </div>
@@ -229,6 +229,7 @@ function App() {
             <div className="partner-logo partner2"></div>
             <div className="partner-logo partner3"></div>
             <div className="partner-logo partner4"></div>
+            <div className="partner-logo partner5"></div>
           </div>
         </div>
 
@@ -307,14 +308,14 @@ const activePrizes = [
 const lightLeaguePrizes = [
   { place: 1, description: 'Крісло для геймерів Proove Gaming Unit'},
   { place: 2, description: 'Монітор QUBE 25" FHD 360Hz'},
-  { place: 3, description: 'Клавіатура Everfrost black, Коврик Rate SE, Коврик Radiance L black'},
+  { place: 3, description: 'Клавіатура Everfrost black, Миша Rate SE, Коврик Radiance L black'},
   { place: 4, description: 'Slicker black'},
-  { place: 5, description: 'Slicker black'},
+  { place: 5, description: 'Rate black'},
 ];
 
 const proLeaguePrizes = [
   { place: 1, description: 'Крісло для геймерів Proove Gaming NPC'},
-  { place: 2, description: 'Геймерське крісло'},
+  { place: 2, description: 'Монітор QUBE 25" FHD 360Hz'},
   { place: 3, description: 'Клавіатура Coupe white, Миша Rate Pro, Коврик Radiance XL'},
   { place: 4, description: 'Slicker Pro black'},
   { place: 5, description: 'Rate Pro black'},
